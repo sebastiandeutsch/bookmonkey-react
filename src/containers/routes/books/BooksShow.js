@@ -13,22 +13,30 @@ import * as Actions from 'actions/Actions';
  * Layout
  */
 export class BooksShow extends React.Component {
-  render() {
-    const book = _.findWhere(this.props.books, { isbn: this.props.params.id });
+  static contextTypes = {
+    storeIsSynchronized: React.PropTypes.bool
+  };
 
-    return (
-      <div className={Styles.Books}>
-        <h2>
-          Book: {book.title}
-        </h2>
-        <p>
-          {book.subtitle}
-        </p>
-        <p>
-          {book.abstract}
-        </p>
-      </div>
-    )
+  render() {
+    if(this.context.storeIsSynchronized) {
+      const book = _.findWhere(this.props.books, { isbn: this.props.params.id });
+
+      return (
+        <div className={Styles.Books}>
+          <h2>
+            Book: {book.title}
+          </h2>
+          <p>
+            {book.subtitle}
+          </p>
+          <p>
+            {book.abstract}
+          </p>
+        </div>
+      )
+    } else {
+      return <div>Loading</div>
+    }
   }
 }
 
