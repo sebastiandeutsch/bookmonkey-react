@@ -49,6 +49,13 @@ export default class API {
     );
   }
 
+  updateBook(book) {
+    return this._put(
+      `/books/${book.isbn}`,
+      book
+    )
+  }
+
   getSomething(something) {
     return this._get(
       '/something',
