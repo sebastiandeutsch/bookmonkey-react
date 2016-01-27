@@ -21,7 +21,7 @@ export class Sidebar extends React.Component {
         </h1>
         <ul>
           <li>
-            <Link to="/help/1">Help?</Link>
+            <Link to="/book/new">New Book</Link>
           </li>
           <li>
             <span>API: </span>
