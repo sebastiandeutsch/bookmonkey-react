@@ -5,4 +5,5 @@ export const UPDATE_URL               = 'UPDATE_URL';
 export const CHANGE_SOMETHING = 'CHANGE_SOMETHING';
 
 // books
-export const SET_BOOKS = 'SET_BOOKS';
+export const SET_BOOKS   = 'SET_BOOKS';
+export const CREATE_BOOK = 'CREATE_BOOK';
