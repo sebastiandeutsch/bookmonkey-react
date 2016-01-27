@@ -26,7 +26,15 @@ export class BooksEdit extends React.Component {
     book.subtitle = this.refs.subtitle.value;
     book.abstract = this.refs.abstract.value;
 
-    this.props.actions.updateBook(book);
+    this.props.actions.updateBook(book).then(
+      (response) => {
+        this.props.actions.redirectTo('/');
+      },
+      (error) => {
+        console.log("error");
+        this.props.actions.redirectTo('/');
+      }
+    );
   }
 
   render() {
