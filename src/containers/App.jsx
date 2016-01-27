@@ -10,6 +10,7 @@ import Help from 'containers/routes/Help';
 
 import BooksIndex from 'containers/routes/books/BooksIndex';
 import BooksShow from 'containers/routes/books/BooksShow';
+import BooksEdit from 'containers/routes/books/BooksEdit';
 
 import StoreLoader from 'loaders/StoreLoader';
 import BookLoader from 'loaders/books/BookLoader';
@@ -23,6 +24,7 @@ store.dispatch(Actions.loadBooks());
 let routes = <Route path='/' component={Layout}>
   <IndexRoute component={BooksIndex} />
   <Route path='/book/:id' component={BooksShow} loader={BookLoader} />
+  <Route path='/book/:id/edit' component={BooksEdit} loader={BookLoader} />
 </Route>;
 
 /**
