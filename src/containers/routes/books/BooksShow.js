@@ -10,12 +10,20 @@ import Styles from 'stylesheets/containers/routes/books/BooksShow.sass';
 import * as Actions from 'actions/Actions';
 
 /**
- * Layout
+ * BooksShow
  */
 export class BooksShow extends React.Component {
+  handleEditClick = ::this.handleEditClick;
+
   static contextTypes = {
     storeIsSynchronized: React.PropTypes.bool
   };
+
+  handleEditClick(event) {
+    const book = _.findWhere(this.props.books, { isbn: this.props.params.id });
+
+    this.props.actions.redirectTo('/book/' + book.isbn + '/edit');
+  }
 
   render() {
     if(this.context.storeIsSynchronized) {
@@ -32,6 +40,11 @@ export class BooksShow extends React.Component {
           <p>
             {book.abstract}
           </p>
+          <div className={Styles.functions}>
+            <FlatButton onClick={this.handleEditClick}>
+              Edit
+            </FlatButton>
+          </div>
         </div>
       )
     } else {
