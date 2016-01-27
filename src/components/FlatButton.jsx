@@ -9,6 +9,11 @@ import Styles from 'stylesheets/components/FlatButton.sass';
  * FlatButton
  */
 export default class FlatButton extends Component {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    onClick: PropTypes.func.isRequired
+  };
+
   handleOnClick = ::this.handleOnClick;
 
   handleOnClick(event) {
@@ -23,8 +28,3 @@ export default class FlatButton extends Component {
     )
   }
 }
-
-FlatButton.propTypes = {
-  children: PropTypes.node.isRequired,
-  onClick: PropTypes.func.isRequired
-};
