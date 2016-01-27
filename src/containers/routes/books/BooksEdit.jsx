@@ -20,7 +20,7 @@ export class BooksEdit extends React.Component {
   };
 
   handleSubmitClick(event) {
-    const book = _.findWhere(this.props.books, { isbn: this.props.params.id });
+    let book = _.findWhere(this.props.books, { isbn: this.props.params.id });
 
     book.title = this.refs.title.value;
     book.subtitle = this.refs.subtitle.value;
@@ -39,7 +39,7 @@ export class BooksEdit extends React.Component {
 
   render() {
     if(this.context.storeIsSynchronized) {
-      const book = _.findWhere(this.props.books, { isbn: this.props.params.id });
+      let book = _.findWhere(this.props.books, { isbn: this.props.params.id });
 
       return (
         <div className={Styles.Books}>
