@@ -6,7 +6,7 @@ const initialState = {
 
 const actionsMap = {
   /**
-   * Updates something
+   * sets the collection
    */
   [Actions.SET_BOOKS]: (state, action) => {
     state = { ...state };
@@ -15,6 +15,19 @@ const actionsMap = {
 
     return state;
   },
+
+  /**
+   * adds a book
+   */
+  [Actions.CREATE_BOOK]: (state, action) => {
+    state = { ...state };
+
+    state.collection.push(action.payload.book);
+
+    return state;
+  },
+
+
 }
 
 export default function books(state = initialState, action) {
