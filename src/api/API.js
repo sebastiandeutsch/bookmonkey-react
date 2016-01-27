@@ -2,8 +2,6 @@ import _ from 'lodash';
 import Axios from 'axios';
 import Config from 'config/Config';
 
-
-
 export default class API {
   constructor(session, axios = Axios, config = Config) {
     this.session = session;
@@ -45,10 +43,18 @@ export default class API {
     );
   }
 
+  loadBooks() {
+    return this._get(
+      '/books'
+    );
+  }
+
   getSomething(something) {
     return this._get(
       '/something',
       { something }
     )
   }
+
+
 }
