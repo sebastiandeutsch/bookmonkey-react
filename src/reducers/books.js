@@ -28,6 +28,22 @@ const actionsMap = {
   },
 
 
+  /**
+   * updates a book
+   */
+  [Actions.UPDATE_BOOK]: (state, action) => {
+    state = { ...state };
+
+    let book = _.findWhere(state.collection, { isbn: action.payload.book.isbn });
+    book.title = action.payload.book.title;
+    book.subtitle = action.payload.book.subtitle;
+    book.abstract = action.payload.book.abstract;
+
+    console.log(state);
+
+    return state;
+  },
+
 }
 
 export default function books(state = initialState, action) {

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Router, Route, Link } from 'react-router';
 
-import FlatButton from 'components/FlatButton';
+import BookForm from 'components/BookForm';
 
 import Styles from 'stylesheets/containers/routes/books/BooksEdit.sass';
 
@@ -13,25 +13,14 @@ import * as Actions from 'actions/Actions';
  * BooksShow
  */
 export class BooksNew extends React.Component {
-  handleSubmitClick = ::this.handleSubmitClick;
+  handleSubmit = ::this.handleSubmit;
 
   static contextTypes = {
     storeIsSynchronized: React.PropTypes.bool
   };
 
-  handleSubmitClick(event) {
-    let book = {
-      isbn: "",
-      title: "",
-      subtitle: "",
-      abstract: ""
-    };
-
-    book.isbn = this.refs.isbn.value;
-    book.title = this.refs.title.value;
-    book.subtitle = this.refs.subtitle.value;
-    book.abstract = this.refs.abstract.value;
-
+  handleSubmit(book) {
+    console.log(book);
     this.props.actions.createBook(book).then(
       (response) => {
         this.props.actions.redirectTo('/');
@@ -57,25 +46,7 @@ export class BooksNew extends React.Component {
           <h2>
             New Book: {book.title}
           </h2>
-          <ul>
-            <li>
-              <input ref="isbn" type="text" defaultValue={book.isbn} />
-            </li>
-            <li>
-              <input ref="title" type="text" defaultValue={book.title} />
-            </li>
-            <li>
-              <input ref="subtitle" type="text" defaultValue={book.subtitle} />
-            </li>
-            <li>
-              <textarea ref="abstract" defaultValue={book.abstract} />
-            </li>
-            <li>
-              <FlatButton onClick={this.handleSubmitClick}>
-                Create
-              </FlatButton>
-            </li>
-          </ul>
+          <BookForm book={book} onSubmit={this.handleSubmit} />
         </div>
       )
     } else {
