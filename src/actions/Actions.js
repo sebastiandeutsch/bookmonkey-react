@@ -38,6 +38,19 @@ export function loadBooks() {
   };
 }
 
+export function createBook(book) {
+  return (dispatch, getState) => {
+    let api = new API();
+    dispatch({
+      type: types.CREATE_BOOK,
+      payload: {
+        book
+      }
+    })
+    return api.createBook(book);
+  };
+}
+
 export function updateBook(book) {
   return (dispatch, getState) => {
     let api = new API();
