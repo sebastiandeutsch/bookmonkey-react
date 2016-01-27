@@ -38,6 +38,20 @@ export function loadBooks() {
   };
 }
 
+export function updateBook(book) {
+  return (dispatch, getState) => {
+    let api = new API();
+    return api.updateBook(book).then(
+      (response) => {
+        console.log("update was successfull");
+      },
+      (error) => {
+        console.log("update had an error");
+      }
+    );
+  };
+}
+
 /**
  * Action creator that changes something
  * @param something
