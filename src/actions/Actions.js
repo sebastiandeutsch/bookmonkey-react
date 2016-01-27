@@ -15,6 +15,29 @@ export function redirectTo(url) {
   }
 }
 
+export function loadBooks() {
+  return (dispatch, getState) => {
+    let api = new API();
+    return api.loadBooks().then(
+      (response) => {
+        dispatch({
+          type: types.SET_BOOKS,
+          payload: {
+            books: response.data
+          }
+        })
+      },
+      (error) => {
+        dispatch({
+          type: types.SET_BOOKS,
+          payload: new Error("Can't load books"),
+          error: true
+        })
+      }
+    );
+  };
+}
+
 /**
  * Action creator that changes something
  * @param something
