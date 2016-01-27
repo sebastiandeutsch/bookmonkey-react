@@ -15,6 +15,7 @@ import ResetStyles from 'stylesheets/reset.css';
 import ApplicationStyles from 'stylesheets/application.sass';
 
 const store = configureStore();
+store.dispatch(Actions.loadBooks());
 
 let routes = <Route path='/' component={Layout}>
   <IndexRoute component={Hello} />
